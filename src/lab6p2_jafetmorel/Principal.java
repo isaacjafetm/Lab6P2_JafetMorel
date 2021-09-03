@@ -5,7 +5,13 @@
  */
 package lab6p2_jafetmorel;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -40,7 +46,7 @@ public class Principal extends javax.swing.JFrame {
         tabbedpane_reg = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        sp_regedad = new javax.swing.JSpinner();
+        sp_edad = new javax.swing.JSpinner();
         jPanel5 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         tf_carrera = new javax.swing.JTextField();
@@ -59,12 +65,12 @@ public class Principal extends javax.swing.JFrame {
         tf_titun = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
-        tf_regcuenta = new javax.swing.JTextField();
+        tf_hobbie = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        rb_cocina = new javax.swing.JRadioButton();
+        rb_musica = new javax.swing.JRadioButton();
+        rb_libros = new javax.swing.JRadioButton();
+        rb_hogar = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         tf_regnom = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -74,6 +80,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         tf_regpw = new javax.swing.JPasswordField();
         jb_reg = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        tf_correo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,14 +129,14 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(tf_loginpw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(82, 82, 82)
                 .addComponent(jb_login, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Login", jPanel1);
 
         jLabel10.setText("Edad:");
 
-        sp_regedad.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        sp_edad.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -138,7 +146,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(184, 184, 184)
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
-                .addComponent(sp_regedad, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sp_edad, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(271, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -147,7 +155,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(sp_regedad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sp_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(121, Short.MAX_VALUE))
         );
 
@@ -256,13 +264,13 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel23.setText("Intereses:");
 
-        jRadioButton1.setText("Cocina");
+        rb_cocina.setText("Cocina");
 
-        jRadioButton2.setText("Musica");
+        rb_musica.setText("Musica");
 
-        jRadioButton3.setText("Libros");
+        rb_libros.setText("Libros");
 
-        jRadioButton4.setText("Hogar");
+        rb_hogar.setText("Hogar");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -275,11 +283,11 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel22))
                 .addGap(84, 84, 84)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton2)
-                    .addComponent(tf_regcuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton1))
+                    .addComponent(rb_hogar)
+                    .addComponent(rb_libros)
+                    .addComponent(rb_musica)
+                    .addComponent(tf_hobbie, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rb_cocina))
                 .addContainerGap(149, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -288,17 +296,17 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
-                    .addComponent(tf_regcuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_hobbie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
-                    .addComponent(jRadioButton1))
+                    .addComponent(rb_cocina))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton2)
+                .addComponent(rb_musica)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton3)
+                .addComponent(rb_libros)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton4)
+                .addComponent(rb_hogar)
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
@@ -325,6 +333,8 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setText("Correo:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -336,23 +346,27 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel7))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tf_regap)
-                            .addComponent(tf_regnom, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(90, 90, 90)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jLabel5))
-                            .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tf_regpw)
-                            .addComponent(tf_reguser, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tf_regap)
+                                    .addComponent(tf_regnom, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(90, 90, 90)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(17, 17, 17)
+                                        .addComponent(jLabel5))
+                                    .addComponent(jLabel6))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tf_regpw)
+                                    .addComponent(tf_reguser, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tf_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(209, 209, 209)
+                        .addGap(212, 212, 212)
                         .addComponent(jb_reg)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -371,11 +385,15 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(tf_regap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(tf_regpw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(tf_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addComponent(tabbedpane_reg, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jb_reg)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Register", jPanel2);
@@ -393,7 +411,7 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
 
@@ -410,16 +428,61 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_reguserActionPerformed
 
     private void jb_regActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_regActionPerformed
-        // TODO add your handling code here:
-        String nombre = tf_regnom.getText(), apellido = tf_regap.getText(), user = tf_reguser.getText(), pw = tf_regpw.getText();
-        if (tabbedpane_reg.getSelectedIndex() == 0) {
-
-        } else if (tabbedpane_reg.getSelectedIndex() == 1) {
-
-        } else if (tabbedpane_reg.getSelectedIndex() == 2) {
-
-        } else if (tabbedpane_reg.getSelectedIndex() == 3) {
-
+        try {                                       
+            // TODO add your handling code here:
+            String nombre = tf_regnom.getText(), apellido = tf_regap.getText(), user = tf_reguser.getText(), pw = tf_regpw.getText(), correo = tf_correo.getText();
+            File archivo=null;
+            FileWriter canal=null;
+            BufferedWriter ram=null;
+            try {                
+                archivo=new File("./usuarios.txt");
+                canal=new FileWriter(archivo,true);
+                ram =new BufferedWriter(canal);                
+                String linea="Usuario: "+user+". Contraseña: "+pw;                
+                ram.write(linea);
+                ram.newLine();
+                ram.flush();                
+            } catch (Exception e) {
+            }
+            ram.close();
+            canal.close();
+            archivo = new File("./"+nombre+".txt");
+            if (tabbedpane_reg.getSelectedIndex() == 0) {
+                u.add(new Creativos((int)sp_edad.getValue(),nombre,apellido,correo,user,pw));
+                sp_edad.setValue(0);
+            } else if (tabbedpane_reg.getSelectedIndex() == 1) {
+                u.add(new Estudiantes(tf_carrera.getText(),(int)sp_año1.getValue(),(int)sp_año2.getValue(),nombre,apellido,correo,user,pw));
+                tf_carrera.setText("");
+                sp_año1.setValue(0);
+                sp_año2.setValue(0);
+            } else if (tabbedpane_reg.getSelectedIndex() == 2) {
+                u.add(new Ejecutivos(tf_cargo.getText(),tf_empresa.getText(),tf_titun.getText(),tf_titma.getText(),nombre,apellido,correo,user,pw));
+                tf_cargo.setText("");
+                tf_empresa.setText("");
+                tf_titun.setText("");
+                tf_titma.setText("");
+            } else if (tabbedpane_reg.getSelectedIndex() == 3) {
+                Normales n = new Normales();
+                n.setHobbie(tf_hobbie.getText());
+                if(rb_cocina.isSelected()){
+                    n.getInteres().add("Cocina");
+                }else if(rb_libros.isSelected()){
+                    n.getInteres().add("Libros");
+                }else if(rb_hogar.isSelected()){
+                    n.getInteres().add("Hogar");
+                }else if(rb_musica.isSelected()){
+                    n.getInteres().add("Musica");
+                }
+                tf_hobbie.setText("");
+                rb_cocina.setSelected(false);
+                rb_hogar.setSelected(false);
+                rb_libros.setSelected(false);
+                rb_musica.setSelected(false);
+                u.add(n);
+            }
+            
+        } catch (IOException ex) {
+            
         }
 
     }//GEN-LAST:event_jb_regActionPerformed
@@ -476,30 +539,32 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton jb_login;
     private javax.swing.JButton jb_reg;
+    private javax.swing.JRadioButton rb_cocina;
+    private javax.swing.JRadioButton rb_hogar;
+    private javax.swing.JRadioButton rb_libros;
+    private javax.swing.JRadioButton rb_musica;
     private javax.swing.JSpinner sp_año1;
     private javax.swing.JSpinner sp_año2;
-    private javax.swing.JSpinner sp_regedad;
+    private javax.swing.JSpinner sp_edad;
     private javax.swing.JTabbedPane tabbedpane_reg;
     private javax.swing.JTextField tf_cargo;
     private javax.swing.JTextField tf_carrera;
+    private javax.swing.JTextField tf_correo;
     private javax.swing.JTextField tf_empresa;
+    private javax.swing.JTextField tf_hobbie;
     private javax.swing.JPasswordField tf_loginpw;
     private javax.swing.JTextField tf_loginus;
     private javax.swing.JTextField tf_regap;
-    private javax.swing.JTextField tf_regcuenta;
     private javax.swing.JTextField tf_regnom;
     private javax.swing.JPasswordField tf_regpw;
     private javax.swing.JTextField tf_reguser;
