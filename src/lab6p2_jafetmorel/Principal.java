@@ -129,7 +129,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(tf_loginpw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(82, 82, 82)
                 .addComponent(jb_login, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Login", jPanel1);
@@ -393,7 +393,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(tabbedpane_reg, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jb_reg)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Register", jPanel2);
@@ -411,7 +411,7 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -420,7 +420,35 @@ public class Principal extends javax.swing.JFrame {
 
     private void jb_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_loginActionPerformed
         // TODO add your handling code here:
-        
+        administrarCreativos ac = new administrarCreativos("./creativos.txt");
+        administrarEstudiantes aes = new administrarEstudiantes("./estudiantes.txt");
+        administrarEjecutivos aej = new administrarEjecutivos("./ejecutivos.txt");
+        administrarNormales an = new administrarNormales("./normales.txt");
+        ac.cargarArchivo();
+        aes.cargarArchivo();
+        aej.cargarArchivo();
+        an.cargarArchivo();
+        for (Creativos c : ac.getListaPersonas()) {
+            if(c.getUsuario().equals(tf_loginus.getText()) & c.getContraseña().equals(tf_loginpw)){
+                
+            }
+        }
+        for (Estudiantes c : aes.getListaPersonas()) {
+            if(c.getUsuario().equals(tf_loginus.getText()) & c.getContraseña().equals(tf_loginpw)){
+                
+            }
+        }
+        for (Ejecutivos c : aej.getListaPersonas()) {
+            if(c.getUsuario().equals(tf_loginus.getText()) & c.getContraseña().equals(tf_loginpw)){
+                
+            }
+        }
+        for (Normales c : an.getListaPersonas()) {
+            if(c.getUsuario().equals(tf_loginus.getText()) & c.getContraseña().equals(tf_loginpw)){
+                
+            }
+        }
+
     }//GEN-LAST:event_jb_loginActionPerformed
 
     private void tf_reguserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_reguserActionPerformed
@@ -428,35 +456,44 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_reguserActionPerformed
 
     private void jb_regActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_regActionPerformed
-        try {                                       
+        try {
             // TODO add your handling code here:
             String nombre = tf_regnom.getText(), apellido = tf_regap.getText(), user = tf_reguser.getText(), pw = tf_regpw.getText(), correo = tf_correo.getText();
-            File archivo=null;
-            FileWriter canal=null;
-            BufferedWriter ram=null;
-            try {                
-                archivo=new File("./usuarios.txt");
-                canal=new FileWriter(archivo,true);
-                ram =new BufferedWriter(canal);                
-                String linea="Usuario: "+user+". Contraseña: "+pw;                
+            File archivo = null;
+            FileWriter canal = null;
+            BufferedWriter ram = null;
+            try {
+                archivo = new File("./usuarios.txt");
+                canal = new FileWriter(archivo, true);
+                ram = new BufferedWriter(canal);
+                String linea = "Usuario: " + user + ". Contraseña: " + pw;
                 ram.write(linea);
                 ram.newLine();
-                ram.flush();                
+                ram.flush();
             } catch (Exception e) {
             }
             ram.close();
             canal.close();
-            archivo = new File("./"+nombre+".txt");
+            archivo = new File("./" + nombre + ".txt");
             if (tabbedpane_reg.getSelectedIndex() == 0) {
-                u.add(new Creativos((int)sp_edad.getValue(),nombre,apellido,correo,user,pw));
+                administrarCreativos ac = new administrarCreativos("./creativos.txt");
+                ac.cargarArchivo();
+                ac.getListaPersonas().add(new Creativos((int) sp_edad.getValue(), nombre, apellido, correo, user, pw));
+                ac.escribirArchivo();
                 sp_edad.setValue(0);
             } else if (tabbedpane_reg.getSelectedIndex() == 1) {
-                u.add(new Estudiantes(tf_carrera.getText(),(int)sp_año1.getValue(),(int)sp_año2.getValue(),nombre,apellido,correo,user,pw));
+                administrarEstudiantes ae = new administrarEstudiantes("./estudiantes.txt");
+                ae.cargarArchivo();
+                ae.getListaPersonas().add(new Estudiantes(tf_carrera.getText(), (int) sp_año1.getValue(), (int) sp_año2.getValue(), nombre, apellido, correo, user, pw));
+                ae.escribirArchivo();
                 tf_carrera.setText("");
                 sp_año1.setValue(0);
                 sp_año2.setValue(0);
             } else if (tabbedpane_reg.getSelectedIndex() == 2) {
-                u.add(new Ejecutivos(tf_cargo.getText(),tf_empresa.getText(),tf_titun.getText(),tf_titma.getText(),nombre,apellido,correo,user,pw));
+                administrarEjecutivos ae = new administrarEjecutivos("./ejecutivos.txt");
+                ae.cargarArchivo();
+                ae.getListaPersonas().add(new Ejecutivos(tf_cargo.getText(), tf_empresa.getText(), tf_titun.getText(), tf_titma.getText(), nombre, apellido, correo, user, pw));
+                ae.escribirArchivo();
                 tf_cargo.setText("");
                 tf_empresa.setText("");
                 tf_titun.setText("");
@@ -464,13 +501,13 @@ public class Principal extends javax.swing.JFrame {
             } else if (tabbedpane_reg.getSelectedIndex() == 3) {
                 Normales n = new Normales();
                 n.setHobbie(tf_hobbie.getText());
-                if(rb_cocina.isSelected()){
+                if (rb_cocina.isSelected()) {
                     n.getInteres().add("Cocina");
-                }else if(rb_libros.isSelected()){
+                } else if (rb_libros.isSelected()) {
                     n.getInteres().add("Libros");
-                }else if(rb_hogar.isSelected()){
+                } else if (rb_hogar.isSelected()) {
                     n.getInteres().add("Hogar");
-                }else if(rb_musica.isSelected()){
+                } else if (rb_musica.isSelected()) {
                     n.getInteres().add("Musica");
                 }
                 tf_hobbie.setText("");
@@ -478,11 +515,14 @@ public class Principal extends javax.swing.JFrame {
                 rb_hogar.setSelected(false);
                 rb_libros.setSelected(false);
                 rb_musica.setSelected(false);
-                u.add(n);
+                administrarNormales an = new administrarNormales("./normales.txt");
+                an.cargarArchivo();
+                an.getListaPersonas().add(n);
+                an.escribirArchivo();
             }
-            
+
         } catch (IOException ex) {
-            
+
         }
 
     }//GEN-LAST:event_jb_regActionPerformed
