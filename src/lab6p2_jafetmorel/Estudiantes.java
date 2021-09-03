@@ -16,12 +16,13 @@ public class Estudiantes extends Usuarios{
     public Estudiantes() {
     }
 
-    public Estudiantes(String carrera, int año1, int año2, String nombre, String apellido, String correo) {
-        super(nombre, apellido, correo);
+    public Estudiantes(String carrera, int año1, int año2, String nombre, String apellido, String correo, String usuario, String contraseña) {
+        super(nombre, apellido, correo, usuario, contraseña);
         this.carrera = carrera;
         this.año1 = año1;
         this.año2 = año2;
     }
+
 
     public String getCarrera() {
         return carrera;
@@ -49,7 +50,7 @@ public class Estudiantes extends Usuarios{
 
     @Override
     public String toString() {
-        return "Estudiantes{" + "carrera=" + carrera + ", a\u00f1o1=" + año1 + ", a\u00f1o2=" + año2 + '}';
+        return super.toString();
     }
     
 }

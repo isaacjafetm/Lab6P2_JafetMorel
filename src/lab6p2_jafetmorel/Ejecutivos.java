@@ -15,13 +15,15 @@ public class Ejecutivos extends Usuarios{
     public Ejecutivos() {
     }
 
-    public Ejecutivos(String cargo, String empresa, String titun, String titma, String nombre, String apellido, String correo) {
-        super(nombre, apellido, correo);
+    public Ejecutivos(String cargo, String empresa, String titun, String titma, String nombre, String apellido, String correo, String usuario, String contraseña) {
+        super(nombre, apellido, correo, usuario, contraseña);
         this.cargo = cargo;
         this.empresa = empresa;
         this.titun = titun;
         this.titma = titma;
     }
+
+
 
     public String getCargo() {
         return cargo;
@@ -57,7 +59,7 @@ public class Ejecutivos extends Usuarios{
 
     @Override
     public String toString() {
-        return "Ejecutivos{" + "cargo=" + cargo + ", empresa=" + empresa + ", titun=" + titun + ", titma=" + titma + '}';
+        return super.toString();
     }
     
 }

@@ -5,21 +5,24 @@
  */
 package lab6p2_jafetmorel;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author 24661
  */
 public class Normales extends Usuarios{
-    private String hobbie, interes;
+    private String hobbie;
+    private ArrayList<String> interes = new ArrayList();
 
     public Normales() {
     }
 
-    public Normales(String hobbie, String interes, String nombre, String apellido, String correo) {
-        super(nombre, apellido, correo);
+    public Normales(String hobbie, String nombre, String apellido, String correo, String usuario, String contraseña) {
+        super(nombre, apellido, correo, usuario, contraseña);
         this.hobbie = hobbie;
-        this.interes = interes;
     }
+
 
     public String getHobbie() {
         return hobbie;
@@ -29,13 +32,15 @@ public class Normales extends Usuarios{
         this.hobbie = hobbie;
     }
 
-    public String getInteres() {
+    public ArrayList<String> getInteres() {
         return interes;
     }
 
-    public void setInteres(String interes) {
+    public void setInteres(ArrayList<String> interes) {
         this.interes = interes;
     }
+
+
 
     @Override
     public String toString() {

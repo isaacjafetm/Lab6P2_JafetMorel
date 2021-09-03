@@ -14,15 +14,18 @@ import java.util.ArrayList;
 public class Usuarios {
     private String nombre, apellido, correo, usuario, contraseña;
     private ArrayList<Notas> notas = new ArrayList();
-    
     public Usuarios() {
     }
 
-    public Usuarios(String nombre, String apellido, String correo) {
+    public Usuarios(String nombre, String apellido, String correo, String usuario, String contraseña) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
+        this.usuario = usuario;
+        this.contraseña = contraseña;
     }
+
+
 
     public String getNombre() {
         return nombre;
@@ -62,14 +65,6 @@ public class Usuarios {
 
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
-    }
-
-    public ArrayList<Notas> getNotas() {
-        return notas;
-    }
-
-    public void setNotas(ArrayList<Notas> notas) {
-        this.notas = notas;
     }
 
     @Override

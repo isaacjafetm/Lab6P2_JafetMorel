@@ -15,10 +15,12 @@ public class Creativos extends Usuarios{
     public Creativos() {
     }
 
-    public Creativos(int edad, String nombre, String apellido, String correo) {
-        super(nombre, apellido, correo);
+    public Creativos(int edad, String nombre, String apellido, String correo, String usuario, String contraseña) {
+        super(nombre, apellido, correo, usuario, contraseña);
         this.edad = edad;
     }
+
+   
 
     public int getEdad() {
         return edad;
@@ -30,7 +32,7 @@ public class Creativos extends Usuarios{
 
     @Override
     public String toString() {
-        return "Creativos{" + "edad=" + edad + '}';
+        return super.toString();
     }
     
 }
