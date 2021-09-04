@@ -52,7 +52,7 @@ public class Nest extends Notas{
 
     @Override
     public String toString() {
-        return "Nest{" + "recor=" + recor + ", fechafut=" + fechafut + ", descripcion=" + descripcion + '}';
+        return super.toString()+"Nest{" + "recor=" + recor + ", fechafut=" + fechafut + ", descripcion=" + descripcion + '}';
     }
     
 }

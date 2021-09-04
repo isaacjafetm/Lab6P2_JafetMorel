@@ -58,5 +58,10 @@ public class Notas {
     public void setEtiquetas(ArrayList<String> etiquetas) {
         this.etiquetas = etiquetas;
     }
+
+    @Override
+    public String toString() {
+        return "Notas{" + "titulo=" + titulo + ", fecha=" + fecha + ", prioridad=" + prioridad + ", etiquetas=" + etiquetas + '}';
+    }
     
 }

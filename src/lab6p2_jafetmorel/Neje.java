@@ -61,7 +61,7 @@ public class Neje extends Notas{
 
     @Override
     public String toString() {
-        return "Neje{" + "reun=" + reun + ", invitados=" + invitados + ", asunto=" + asunto + ", descripcion=" + descripcion + '}';
+        return super.toString()+"Neje{" + "reun=" + reun + ", invitados=" + invitados + ", asunto=" + asunto + ", descripcion=" + descripcion + '}';
     }
     
 }

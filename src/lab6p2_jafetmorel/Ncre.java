@@ -50,7 +50,7 @@ public class Ncre extends Notas{
 
     @Override
     public String toString() {
-        return "Ncre{" + "categorias=" + categorias + ", descripcion=" + descripcion + ", publico=" + publico + '}';
+        return super.toString()+"Ncre{" + "categorias=" + categorias + ", descripcion=" + descripcion + ", publico=" + publico + '}';
     }
     
 }

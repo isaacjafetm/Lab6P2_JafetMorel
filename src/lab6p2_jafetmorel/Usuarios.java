@@ -67,9 +67,12 @@ public class Usuarios {
         this.contraseña = contraseña;
     }
 
+
+
     @Override
     public String toString() {
-        return "Usuarios{" + "nombre=" + nombre + ", apellido=" + apellido + ", correo=" + correo + '}';
+        return "Usuarios{" + "nombre=" + nombre + ", apellido=" + apellido + ", correo=" + correo + ", usuario=" + usuario + ", contrase\u00f1a=" + contraseña + ", notas=" + notas + '}';
     }
+    
     
 }
